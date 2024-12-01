@@ -12,10 +12,8 @@
 #include "SD_Set.h"
 #include "SD_Show.h"
 #include "SD_Solve.h"
-
 //关闭命令行窗口
 #pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
-
 
 //宏定义
 #define WINDOW_SIZE_L          800//绘制窗口长度
@@ -51,4 +49,9 @@
 #define BUTTON_SET_L           200//设置界面按钮尺寸长
 #define BUTTON_SET_H           70//设置界面按钮尺寸宽
 #define BUTTON_SINTERVAL       30//设置界面按钮间隔
-#endif
+
+extern IMAGE numimg[11], rightimg[11], button[11], choose[10], background[2];    //存储各类图片
+
+void SD_import(void);
+
+#endif;
