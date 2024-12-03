@@ -4,5 +4,8 @@
 #include "SD_Resource.h"
 
 
+//º¯ÊıÉùÃ÷
+bool SD_Play_game(void);
+
 
 #endif
