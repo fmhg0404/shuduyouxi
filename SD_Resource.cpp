@@ -1,9 +1,15 @@
 #include "SD_Resource.h"
 
+
+SHUDU SD;
 IMAGE numimg[11], rightimg[11], button[11], choose[10], background[2];    //´æ´¢¸÷ÀàÍ¼Æ¬
+BYTE LpKeyState_sd[256];
+ExMessage mouse_msg;
+HWND hwnd;
 RECT r = { TIME_SHOW_X, TIME_SHOW_Y, TIME_SHOW_X + TIME_SHOW_L, TIME_SHOW_Y + TIME_SHOW_H };
 TCHAR str[30];
-SHUDU SD;
+GAME_TIME TIME;
+
 
 void SD_import(void)
 {
