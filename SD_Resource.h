@@ -24,6 +24,11 @@ typedef unsigned int u_32;
 #pragma comment(lib,"winmm.lib")
 
 //宏定义
+#define Key_Down(vKey) ((GetAsyncKeyState(vKey) & 0x8000) ? 1 : 0)		//按键按下
+#define Key_Up(vKey) ((GetAsyncKeyState(vKey) & 0x8000) ? 0 : 1)		//按键弹起
+//每次检测前需先将256 个虚拟密钥的状态复制到指定的缓冲区(LpKeyState_sd)，然后再检测Num LK的状态
+#define Num_LK		(GetKeyboardState(LpKeyState_sd)?((LOBYTE(LpKeyState_sd[144])) ? 1 : 0):0)
+
 #define WINDOW_SIZE_L          800//绘制窗口长度
 #define WINDOW_SIZE_H          600//绘制窗口宽度
 
@@ -58,8 +63,6 @@ typedef unsigned int u_32;
 #define BUTTON_SET_H           70//设置界面按钮尺寸宽
 #define BUTTON_SINTERVAL       30//设置界面按钮间隔
 
-
-
 //游戏功能
 typedef enum gameflag
 {
@@ -73,7 +76,7 @@ typedef enum gameflag
 	GAME_HINT,
 	GAME_SET,
 	SET_EASY,
-	SET_HAND,
+	SET_HARD,
 	SET_HARDEST,
 	SET_SELF,
 	SET_BACK,
@@ -101,10 +104,10 @@ typedef enum Interface {
 //结构体定义
 typedef struct sudoku
 {
-	u_8 init[9][9] = { 0 };
+	u_8 Init[9][9] = { 0 };
 	u_8 solve[9][9] = { 0 };
 	u_8 game[9][9] = { 0 };
-	u_8 right_date[9][9][10] = { 0 };
+	u_8 right_data[9][9][10] = { 0 };
 
 	GAME_FLAG game_flag = EMPTY;
 	IN_MOVE game_insite_move = NOT_MOVE;
@@ -112,7 +115,10 @@ typedef struct sudoku
 	bool Rinputflag = 0;
 	bool Gameing = 0;
 	bool New_state = 1;
-	INT_FACE INT_face = MAIN;
+	INT_FACE Int_face = MAIN;
+
+	bool Main_Interface = 1;			//正处于主界面或自定义界面
+	bool Set_Self_Inerface = 0;
 
 	bool Mouse_flag = 0;
 

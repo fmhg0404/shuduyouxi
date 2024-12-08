@@ -5,7 +5,7 @@
 
 
 //º¯ÊıÉùÃ÷
-bool SD_Play_game(void);
+bool SD_Play_Game(void);
 
 
 #endif
