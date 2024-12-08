@@ -1,16 +1,20 @@
 #include "SD_Resource.h"
 
+//定义变量
+SHUDU SD;		//整体游戏控制变量
+IMAGE numimg[11], rightimg[11], button[11], choose[10], background[2];		//存储各类图片
+BYTE LpKeyState_sd[256];		//存储虚拟按键密钥 Key code
+ExMessage mouse_msg = { 0 };	//存储鼠标信息
+HWND hwnd;						//窗口句柄
+RECT r = { TIME_SHOW_X, TIME_SHOW_Y, TIME_SHOW_X + TIME_SHOW_L, TIME_SHOW_Y + TIME_SHOW_H };	//时间显示的区域
+TCHAR str[30];					//存储显示的字符串内容
+GAME_TIME TIME;					//存储时间
 
-SHUDU SD;
-IMAGE numimg[11], rightimg[11], button[11], choose[10], background[2];    //存储各类图片
-BYTE LpKeyState_sd[256];
-ExMessage mouse_msg;
-HWND hwnd;
-RECT r = { TIME_SHOW_X, TIME_SHOW_Y, TIME_SHOW_X + TIME_SHOW_L, TIME_SHOW_Y + TIME_SHOW_H };
-TCHAR str[30];
-GAME_TIME TIME;
-
-
+/*	导入图像文件
+*	简介：	打开程序所需图像文件，仅由主函数调用一次。
+*	参数：	无
+*	返回值：无
+*/
 void SD_import(void)
 {
 	//数字区域图片
@@ -51,7 +55,7 @@ void SD_import(void)
 	loadimage(&button[8], _T("./Image/mode2.jpg"), BUTTON_SET_L, BUTTON_SET_H);
 	loadimage(&button[9], _T("./Image/mode3.jpg"), BUTTON_SET_L, BUTTON_SET_H);
 	loadimage(&button[10], _T("./Image/mode4.jpg"), BUTTON_SET_L, BUTTON_SET_H);
-	
+
 	//选择区域图片
 	loadimage(&choose[0], _T("./Image/1.jpg"), CHOOSE_PICTURE_SIZE, CHOOSE_PICTURE_SIZE);
 	loadimage(&choose[1], _T("./Image/2.jpg"), CHOOSE_PICTURE_SIZE, CHOOSE_PICTURE_SIZE);
@@ -67,6 +71,4 @@ void SD_import(void)
 	//背景图片
 	loadimage(&background[0], _T("./Image/background.jpg"), WINDOW_SIZE_L, WINDOW_SIZE_H);
 	loadimage(&background[1], _T("./Image/gamebackground.jpg"), GAME_BACKGROUND_SIZE, GAME_BACKGROUND_SIZE);
-
-
 }
