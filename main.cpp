@@ -1,11 +1,15 @@
 #include "SD_Resource.h"
 
-
-; int main(void)
+/*	主函数
+*	简介：	程序入口
+*	参数：	无
+*	返回值：程序正常结束返回0
+*/
+int main(void)
 {
 	TCHAR Show_vitory[50];			//存储交互信息
 	hwnd = initgraph(WINDOW_SIZE_L, WINDOW_SIZE_H);		//创建绘图窗口
-	SD_Music_import();			//播放背景音乐
+	SD_music_import();			//播放背景音乐
 	SD_import();			//导入资源文件
 	SD_Game_Init();			//初始化游戏参数
 	while (1)
@@ -26,7 +30,7 @@
 			SD_Game_Init();		//初始化游戏参数
 		}
 	}
-	SD_Music_close();		//关闭音乐
+	SD_music_close();		//关闭音乐
 	closegraph();			//关闭绘图窗口
 	return 0;
 }
